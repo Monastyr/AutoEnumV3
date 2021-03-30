@@ -91,6 +91,8 @@ volumes:
     external: false
   screengrab-volume:
     external: false
+  log-volume:
+    external: false
 networks:
   autoenum-network:
     driver: bridge
