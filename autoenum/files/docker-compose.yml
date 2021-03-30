@@ -35,6 +35,8 @@ services:
     container_name: autoenum-webgui
     restart: always
     build: ./website
+    depends_on:
+      - autoenum-api
     ports:
       - '8080:8080'
     networks:
