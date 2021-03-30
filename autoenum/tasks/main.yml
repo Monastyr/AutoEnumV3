@@ -30,11 +30,14 @@
     repo: https://github.com/cve-search/CVE-Search-Docker.git
     dest: /etc/ansible/roles/autoenum/files/cve-search
     clone: yes
-      
- - name: Install the package "nmap"
+
+- name: Install the package "nmap"
   apt:
     name: nmap
     state: present
+    
+- pip:
+    requirements: /etc/ansible/roles/autoenum/files/scanner/requirements.txt
   
 - name: running docker compose
   shell: docker-compose -f /etc/ansible/roles/autoenum/files/docker-compose.yml up -d
