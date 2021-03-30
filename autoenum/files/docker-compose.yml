@@ -10,6 +10,7 @@ services:
       - autoenum-network
     volumes:
       - "screengrab-volume:/pictures"
+      - "log-volume:/log"
   autoenum-mongodb:
     container_name: autoenum-mongodb
     restart: always
