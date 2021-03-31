@@ -3,4 +3,3 @@ urllib3==1.25.8
 python3_nmap==1.5.0
 pymongo==3.11.3
 pywinrm>=0.3.0
-© 2021 GitHub, Inc.
