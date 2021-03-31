@@ -2,10 +2,11 @@ version: "3.2"
 services:
   autoenum-api:
     container_name: autoenum-api
+    hostname: autoenum-api
     restart: always
     build: ./api
     ports:
-      - '5001:5000'
+      - '5001:5001'
     networks:
       - autoenum-network
     volumes:
@@ -40,12 +41,12 @@ services:
     ports:
       - '8080:8080'
     networks:
-      - 'autoenum-network'
+      - autoenum-network
   cve_search:
     image: cve_search
     build:
-      context: ./cve-search
-      dockerfile: /etc/ansible/roles/autoenum/files/cve-search/docker/images/cve_search/dockerfile-cve_search
+      context: .
+      dockerfile: docker/images/cve_search/dockerfile-cve_search
       args:
         - REPO=cve-search/cve-search
         - BRANCH=master
@@ -65,8 +66,8 @@ services:
     hostname: redis
     restart: always
     build:
-      context: ./cve-search
-      dockerfile: /etc/ansible/roles/autoenum/files/cve-search/docker/images/redis/dockerfile-redis
+      context: .
+      dockerfile: docker/images/redis/dockerfile-redis
     volumes:
       - "./.cve_search_data/cve_search_redis:/data"
     expose:
@@ -78,8 +79,8 @@ services:
     hostname: mongo
     restart: always
     build:
-      context: ./cve-search
-      dockerfile: /etc/ansible/roles/autoenum/files/cve-search/docker/images/mongodb/dockerfile-mongo
+      context: .
+      dockerfile: docker/images/mongodb/dockerfile-mongo
     volumes:
       - "./.cve_search_data/cve_search_mongodb:/data/db"
     expose:
